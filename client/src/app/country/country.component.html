@@ -2,30 +2,31 @@
 <div class="error">{{ errorMessage }}</div>
 
 <h2>Continet page: {{ continent }}</h2>
-<mat-card *ngFor = "let country of countries">
+<ng-container *ngIf="countries">
+    <mat-card  *ngFor = "let country of countries">
 
-    <div class = "content">
+        <div class = "content">
 
-        <div class="text">
-            <p class="overline"> {{ country.code }} </p>
-            <h5 class="card-title text-primary">{{country.name}}</h5>
-            <p class="card-text">Phone: {{country.phone}}</p>
-            <p class="card-text">Capital: {{country.capital}}</p>
-            <p class="card-text">Currency: {{country.currency}}</p>
-            <p class="card-text">Languages: </p>
+            <div class="text">
+                <p class="overline"> {{ country.code }} </p>
+                <h5 class="card-title text-primary">{{country.name}}</h5>
+                <p class="card-text">Phone: {{country.phone}}</p>
+                <p class="card-text">Capital: {{country.capital}}</p>
+                <p class="card-text">Currency: {{country.currency}}</p>
+                <p class="card-text">Languages: </p>
 
-            <ul>                
-                <li *ngFor="let language of country.languages">
-                   {{ language.name }}
-                </li>
-              </ul>
+                <ul  *ngIf="country.languages">                
+                    <li *ngFor="let language of country.languages">
+                    {{ language.name }}
+                    </li>
+                </ul>
+            </div>
+        
+            <div>
+                <img mat-card-sm-image src="https://www.countryflags.io/{{ country.code }}/shiny/64.png" onerror="this.src='https://www.countryflags.io/IL/shiny/64.png';">
+            </div>
         </div>
-    
-        <div>
-            <img mat-card-sm-image src="https://www.countryflags.io/{{ country.code }}/shiny/64.png" onerror="this.src='https://www.countryflags.io/IL/shiny/64.png';">
-        </div>
-    </div>
 
 
-</mat-card>
-
+    </mat-card>
+</ng-container>

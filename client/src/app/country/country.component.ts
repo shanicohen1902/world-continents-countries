@@ -20,7 +20,6 @@ export class CountryComponent implements OnInit {
   ngOnInit(): void {
      this.continentsService.countries(this.continent).subscribe(
       (res: any) => {
-        console.log(res);
         this.countries = res;
      },
      error => {
