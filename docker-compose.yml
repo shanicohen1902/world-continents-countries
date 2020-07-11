@@ -1,10 +1,12 @@
 version: '3'
 services:
   server:
-    build: server/
+    build:
+      context: https://github.com/shanicohen1902/world-continents-countries.git#:server
     ports:
       - "8080:8080"
   client:
-    build: client/
+    build:
+      context: https://github.com/shanicohen1902/world-continents-countries.git#:client
     ports:
       - "4200:4200"
