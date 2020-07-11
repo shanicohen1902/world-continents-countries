@@ -30,5 +30,30 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/country/:code', function(req, res) {
+
+  var continent = req.params.code;
+  data = simple_dao.get( continent );
+  if ( data  ){
+      console.log("catch!!! cache");
+      res.ok(data);
+      return;
+    }
+
+    var newstring = queries.COUNTRIES_BY_CONTINENT.replace(/CODE_PLACEHOLDER/, continent);
+
+  request(constants.COUNRIES_BASE_URL + newstring, { json: true }, (err, response, body) => {
+    console.log(body);
+
+      if (body.errors) { 
+        res.error(body.errors);
+        return;
+    }
+      simple_dao.set( continent , body, 0 );
+      res.ok(body);
+    });
+
+});
+
 
 module.exports = router;
