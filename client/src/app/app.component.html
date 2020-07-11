@@ -1,0 +1,5 @@
+
+<h1>Continents & Countries</h1>
+<button *ngIf="continent" (click)="onClickBack()" mat-flat-button color="primary">Back</button>
+<app-continents-list *ngIf="!continent" (continentSelectedEvent)="getCode($event)"></app-continents-list>
+<app-country *ngIf="continent" [continent]="continent"  ></app-country>

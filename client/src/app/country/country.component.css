@@ -1,0 +1,31 @@
+.content {
+    display: flex;
+  }
+  
+  .content img {
+    margin-right: 10px;
+    display: block;
+    margin-top: 25px;
+    margin-left: 20px;
+  }
+  .text{
+      margin: 10px;
+      min-width: 300px;
+  }
+  
+  .overline{
+      color: gray;
+  }
+
+  .card-title{
+    font-size: large;
+  }
+
+  .mat-card {
+        border-style: ridge;
+        margin: 5px;
+        max-width: 500px;
+    }
+    
+  .content h3,
+  .content p {margin: 0;}
