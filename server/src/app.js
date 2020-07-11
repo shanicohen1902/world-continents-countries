@@ -8,7 +8,7 @@ app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 
-//Routing
+//Continent Routing
 app.use('/continent',continentRouter);
 
 module.exports = app;
