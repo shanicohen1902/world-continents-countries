@@ -10,18 +10,22 @@ import { ContinentsService } from '../../continents.service';
 export class CountryComponent implements OnInit {
   @Input()
   continent: string;
-  countries;
+  countries: Partial<CountryObj[]>;
+  errorMessage: string;
+
+
 
   constructor(private continentsService: ContinentsService) { }
 
   ngOnInit(): void {
      this.continentsService.countries(this.continent).subscribe(
-      (res:any) =>{
-        console.log(res.data.continent.countries);
-        this.countries = res.data.continent.countries;
+      (res: any) => {
+        console.log(res);
+        this.countries = res;
      },
-     error =>{
+     error => {
       console.log(error);
+      this.errorMessage = error.error;
      });
 
   }

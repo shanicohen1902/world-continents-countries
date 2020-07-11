@@ -11,23 +11,25 @@ export class ContinentsListComponent implements OnInit {
 
   @Output() continentSelectedEvent = new EventEmitter<string>();
 
-  displayedColumns: string[] = ['code', 'name'];
-  dataSource;
+  displayedColumns: string[] = ['Continent Code', 'Continent Name'];
+  dataSource: Partial<ContinentObj>;
+  errorMessage: string;
 
   constructor(private continentsService: ContinentsService) { }
 
   ngOnInit(): void {
 
     this.continentsService.continentsList().subscribe(
-      (res:any) =>{
-        this.dataSource = res.data.continents;
+      (res: any) => {
+        this.dataSource = res;
      },
-     error =>{
+     error => {
       console.log(error);
+      this.errorMessage = error.error;
      });
   }
 
-  getRecord(element){
+  getRecord(element): void{
     this.continentSelectedEvent.emit(element.code);
   }
 

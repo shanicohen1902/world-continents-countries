@@ -1,4 +1,4 @@
-const content_repository = require('../simpleCache');
+const content_repository = require('../cache/simpleCache');
 
 cache = content_repository.cache;
 
